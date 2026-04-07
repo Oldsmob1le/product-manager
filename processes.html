@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM Cheat Sheet | Процессы и Канбан</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased flex h-screen overflow-hidden">
+
+    <aside class="w-64 bg-white border-r border-gray-200 flex flex-col hidden md:flex shrink-0">
+        <div class="h-16 flex items-center px-6 border-b border-gray-200">
+            <h1 class="text-xl font-bold text-indigo-600">PM Cheat Sheet</h1>
+        </div>
+        <nav class="flex-1 overflow-y-auto p-4 space-y-2">
+            <a href="index.html" class="block px-4 py-2 rounded-md text-gray-600 hover:bg-gray-100">Главная и База</a>
+            <a href="formulas.html" class="block px-4 py-2 rounded-md text-gray-600 hover:bg-gray-100">Метрики и Формулы</a>
+            <a href="frameworks.html" class="block px-4 py-2 rounded-md text-gray-600 hover:bg-gray-100">Фреймворки и Стратегии</a>
+            <a href="processes.html" class="block px-4 py-2 rounded-md bg-indigo-50 text-indigo-700 font-medium">Процессы и Сроки</a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 h-screen overflow-y-auto bg-gray-50 p-6 lg:p-10">
+        <div class="max-w-5xl mx-auto space-y-10">
+            
+            <header class="border-b border-gray-200 pb-4">
+                <h2 class="text-4xl font-bold text-gray-900">⏱️ Процессы: Kanban, WIP и Сроки</h2>
+                <p class="mt-4 text-lg text-gray-600 leading-relaxed">
+                    Частая проблема в IT: все постоянно заняты, пишут код по ночам, но <b>готовый продукт до пользователей не доходит месяцами</b>. Почему? Потому что компания работает как забитое машинами шоссе. В этом разделе мы учимся выстраивать "конвейер" так, чтобы задачи двигались быстро и без пробок.
+                </p>
+            </header>
+
+            <section class="space-y-6">
+                <h3 class="text-3xl font-bold text-gray-900">1. Инструменты потока: Kanban и WIP-лимиты</h3>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl">📋</span>
+                        <h4 class="text-2xl font-bold text-indigo-900">Что такое Kanban (Канбан)?</h4>
+                    </div>
+                    <div class="bg-indigo-50 p-4 rounded-xl text-indigo-900 text-sm mb-6 border border-indigo-100">
+                        <b>Для новичка:</b> Канбан — это доска со стикерами (колонки: "Нужно сделать", "В работе", "Тестируется", "Готово"). В отличие от Scrum (где работа жестко пилится на 2-недельные спринты), в Канбане задачи идут <i>непрерывным потоком</i>. Главная цель Канбана — чтобы стикер как можно быстрее пролетел от первой колонки до последней.
+                    </div>
+
+                    <h4 class="text-xl font-bold text-gray-900 mt-6 mb-3">🛑 WIP-лимиты (Work In Progress)</h4>
+                    <p class="text-gray-700 mb-4">WIP переводится как "Незавершенная работа". WIP-лимит — это <b>жесткое ограничение на количество задач</b>, которые могут одновременно находиться в одной колонке.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-red-50 p-5 rounded-xl border border-red-100">
+                            <h5 class="font-bold text-red-900 mb-2">❌ Работа без WIP (Хаос)</h5>
+                            <p class="text-sm text-red-800 mb-2">Программист начал делать "Логин". Застрял. Взял задачу "Профиль". Застрял. Взял "Настройки". В итоге у него 5 начатых задач, ни одна не готова.</p>
+                            <p class="text-sm font-bold text-red-900 italic">Следствие: Код пишется, но продукт не выходит.</p>
+                        </div>
+                        <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-100">
+                            <h5 class="font-bold text-emerald-900 mb-2">✅ Работа с WIP-лимитом</h5>
+                            <p class="text-sm text-emerald-800 mb-2">Мы ставим правило: в колонке "В разработке" <b>не может быть больше 3 задач</b>. Программист не имеет права брать новую задачу, пока не доведет до конца старую.</p>
+                            <p class="text-sm font-bold text-emerald-900 italic">Золотое правило: "Хватит начинать, начни заканчивать".</p>
+                        </div>
+                    </div>
+
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">🐝 Сворминг (Swarming — Роение)</h4>
+                    <p class="text-gray-700 mb-3">Что делать, если WIP-лимит достигнут? Допустим, колонка "Тестирование" переполнена (лимит 2 задачи, и там уже 2). Программист закончил писать свой код. <b>Он не берет новую задачу!</b></p>
+                    <div class="bg-gray-100 p-4 rounded-xl border border-gray-200 text-sm text-gray-700">
+                        Вместо этого происходит <b>Сворминг</b>: вся свободная команда "наваливается" на узкое место. Программист идет к тестировщику и говорит: <i>«Чем помочь? Давай я вручную потыкаю приложение или напишу автотест, чтобы мы быстрее разгребли твою колонку»</i>. Общая цель — готовый продукт, а не личная занятость каждого.
+                    </div>
+                </div>
+            </section>
+
+            <section class="space-y-6">
+                <h3 class="text-3xl font-bold text-gray-900">2. Принципы потока: Очереди и Задержки</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+                        <h4 class="text-xl font-bold text-amber-600 mb-3">🚗 Почему загрузка на 100% — это зло</h4>
+                        <div class="bg-amber-50 p-3 rounded text-sm text-amber-900 mb-4">
+                            <b>Аналогия с шоссе (Д. Рейнертсен):</b> Начальники любят, когда программисты заняты на 100%. Но представьте скоростное шоссе. Если заполнить его машинами на 100%, движение встанет. Любое торможение одной машины вызовет мертвую пробку.
+                        </div>
+                        <p class="text-sm text-gray-700">Команде нужен <b>Slack time (Резерв времени)</b> — дистанция между машинами. Программист, пьющий кофе — это нормально. Это значит, что если внезапно упадет сервер (авария), у него есть свободное время, чтобы моментально это починить, не останавливая весь завод.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+                        <h4 class="text-xl font-bold text-blue-600 mb-3">📦 Размер партий (Batch Size)</h4>
+                        <div class="bg-blue-50 p-3 rounded text-sm text-blue-900 mb-4">
+                            <b>Аналогия с книгами:</b> Вам нужно перенести 100 книг в другую комнату. Если попытаться поднять все 100 сразу (огромный релиз раз в полгода), вы надорвете спину или уроните их.
+                        </div>
+                        <p class="text-sm text-gray-700">Переносить по 5 книг (мелкие релизы каждую неделю) — быстрее и безопаснее. Дробите огромные задачи на мелкие. Большие релизы несут огромные риски и задерживают обратную связь от пользователей.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+                    <h4 class="text-2xl font-bold text-gray-900 mb-4">⏱️ Иллюзия оценок (Lead Time vs Cycle Time)</h4>
+                    <p class="text-gray-700 mb-4">Оценивать задачи в абстрактных баллах или часах бессмысленно. Люди всегда врут себе о сроках.</p>
+                    <ul class="text-sm text-gray-700 space-y-2 mb-6">
+                        <li><b>Cycle Time:</b> Время, пока программист <i>реально стучит по клавиатуре</i> (например, 3 дня).</li>
+                        <li><b>Lead Time:</b> Время от идеи до релиза пользователям (например, 45 дней).</li>
+                    </ul>
+                    
+                    <div class="bg-gray-900 text-gray-300 p-5 rounded-xl">
+                        <p class="text-white font-bold mb-2">Где прячутся 42 дня простоя? (В невидимых очередях)</p>
+                        <ul class="space-y-1 text-sm list-disc pl-5 mb-4">
+                            <li>Идея лежит в Бэклоге и ждет планирования: <span class="text-red-400">15 дней ⏳</span></li>
+                            <li>Ждет макет от перегруженного дизайнера: <span class="text-red-400">7 дней ⏳</span></li>
+                            <li class="text-emerald-400 font-bold">Программист пишет код (Cycle Time): 3 дня 🚀</li>
+                            <li>Ждет проверки службой безопасности: <span class="text-red-400">10 дней ⏳</span></li>
+                            <li>Ждет дня корпоративного релиза: <span class="text-red-400">10 дней ⏳</span></li>
+                        </ul>
+                        <p class="text-sm border-t border-gray-700 pt-3"><b>Вывод:</b> Если вы заставите программиста работать в выходные, Lead Time сократится с 45 до 44 дней. С точки зрения бизнеса ничего не изменится. Менеджер должен чинить ОЧЕРЕДИ, а не подгонять людей.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">3. Метод Монте-Карло: Как называть сроки 🎲</h3>
+                
+                <div class="bg-indigo-50 p-4 rounded-xl text-indigo-900 text-sm mb-6 border border-indigo-100">
+                    <b>Для новичка:</b> Когда директор спрашивает "Когда будет готово?", нельзя отвечать "Ну, разработчики обещали в пятницу". Разработчики — оптимисты. Метод Монте-Карло — это алгоритм, который прогнозирует будущее, основываясь на вашей реальной статистике из прошлого.
+                </div>
+
+                <div class="space-y-4 text-sm text-gray-700">
+                    <p><b>Шаг 1: Сбор исторических данных (Пропускная способность).</b> Откройте таск-трекер. Сколько задач ваша команда закрывала каждую неделю за последние пару месяцев? Допустим: [4, 2, 5, 0, 3, 4, 6]. <i>(Ноль значит, что упал сервер и все его чинили. Не удаляйте нули, аварии будут и в будущем!)</i>.</p>
+                    <p><b>Шаг 2: Аудит проекта.</b> Разбейте новый проект на равные по размеру кусочки. Допустим, получилось 25 задач.</p>
+                    <p><b>Шаг 3: Симуляция.</b> Скрипт случайно дергает число из вашей истории.<br>
+                    - Неделя 1: Выпало 4. (Осталась 21 задача).<br>
+                    - Неделя 2: Выпало 0. (Осталась 21 задача).<br>
+                    Компьютер повторяет это до нуля, а затем проигрывает симуляцию 10 000 раз, строя график вероятностей.</p>
+                </div>
+
+                <div class="mt-6 border-l-4 border-emerald-500 pl-4">
+                    <h5 class="font-bold text-gray-900 mb-2">Как отвечать бизнесу (Переводим математику):</h5>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li>🔴 <b>С вероятностью 50% сделаем за 6 недель:</b> «Мы можем рискнуть, но шансы успеть — подкинуть монетку».</li>
+                        <li>🟡 <b>С вероятностью 85% сделаем за 8 недель:</b> «Исторически мы работаем в таком темпе. Это рабочий и честный ориентир».</li>
+                        <li>🟢 <b>С вероятностью 95% сделаем за 10 недель:</b> «Если дата критически важна (показ по ТВ), то гарантированный срок — 10 недель».</li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </main>
+</body>
+</html>
