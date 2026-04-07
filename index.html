@@ -1,93 +1,697 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PM Cheat Sheet | Главная</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>html { scroll-behavior: smooth; }</style>
+    <script src="source/design.js"></script>
+    <link rel="stylesheet" href="source/main.css">
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased flex h-screen overflow-hidden">
 
-    <aside class="w-64 bg-white border-r border-gray-200 flex flex-col hidden md:flex shrink-0">
-        <div class="h-16 flex items-center px-6 border-b border-gray-200">
-            <h1 class="text-xl font-bold text-indigo-600">PM Cheat Sheet</h1>
-        </div>
-        <nav class="flex-1 overflow-y-auto p-4 space-y-2">
-            <a href="index.html" class="block px-4 py-2 rounded-md bg-indigo-50 text-indigo-700 font-medium">Главная и База</a>
-            <a href="formulas.html" class="block px-4 py-2 rounded-md text-gray-600 hover:bg-gray-100">Метрики и Формулы</a>
-            <a href="frameworks.html" class="block px-4 py-2 rounded-md text-gray-600 hover:bg-gray-100">Фреймворки и Стратегии</a>
-            <a href="processes.html" class="block px-4 py-2 rounded-md text-gray-600 hover:bg-gray-100">Процессы и Сроки</a>
-        </nav>
-    </aside>
+<body class="bg-zinc-50 text-zinc-900 font-sans antialiased min-h-[100dvh] selection:bg-accent-light selection:text-accent-dark flex">
+    
+    <div class="noise-bg"></div>
 
-    <main class="flex-1 h-screen overflow-y-auto bg-gray-50">
-        <div class="max-w-5xl mx-auto py-10 px-6 lg:px-8">
-            
-            <header class="mb-10 pb-6 border-b border-gray-200">
-                <div class="flex items-center gap-4 mb-2">
-                    <span class="text-4xl">🚀</span>
-                    <h2 class="text-4xl font-extrabold text-gray-900">Дашборд Продуктолога</h2>
-                </div>
-                <p class="mt-4 text-xl text-gray-600 leading-relaxed">
-                    Добро пожаловать в базу знаний Product Manager (Менеджера по продукту). Этот справочник написан так, чтобы провести вас от полного нуля до понимания сложных систем управления.
-                </p>
-            </header>
+    <div id="sidebar-placeholder"></div>
 
-            <section class="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 mb-10">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Введение: Кто такой Продакт-менеджер?</h3>
-                <p class="text-gray-700 mb-4 leading-relaxed">
-                    <b>Простыми словами:</b> Продакт-менеджер (PM) — это "мини-генеральный директор" конкретного продукта (например, приложения Atlas, Яндекс.Такси или даже новой модели кроссовок). Его главная задача — сделать так, чтобы продукт был <b>нужен пользователям</b> и <b>приносил деньги бизнесу</b>.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                    <div class="bg-red-50 p-5 rounded-xl border border-red-100">
-                        <h4 class="font-bold text-red-800 mb-2">❌ Чем PM НЕ занимается:</h4>
-                        <ul class="list-disc pl-5 text-sm text-red-900 space-y-1">
-                            <li>Не пишет код сам (это делают разработчики).</li>
-                            <li>Не рисует дизайн (это делают UX/UI дизайнеры).</li>
-                            <li>Не управляет людьми напрямую (он не их начальник, он управляет <i>смыслами</i>).</li>
-                        </ul>
+    <main class="flex-1 md:ml-72 relative">
+        <div class="max-w-[1200px] mx-auto w-full">
+
+            <section id="base" class="min-h-[100dvh] flex flex-col justify-center px-6 md:px-16 py-24">
+                <div id="header"></div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                    <div class="md:col-span-7 bg-white rounded-[2.5rem] p-10 shadow-bento border border-zinc-200/50 interactive-card">
+                        <h3 class="text-2xl font-bold text-zinc-950 mb-4 tracking-tight">Кто такой Продакт-менеджер?</h3>
+                        <p class="text-zinc-600 mb-8 leading-relaxed">
+                            <b>Простыми словами:</b> Продакт-менеджер (PM) — это "мини-генеральный директор" конкретного продукта (например, приложения Atlas, Яндекс.Такси или даже новой модели кроссовок). Его главная задача — сделать так, чтобы продукт был <b>нужен пользователям</b> и <b>приносил деньги бизнесу</b>.
+                        </p>
+
+                        <div class="border-t border-zinc-100 pt-8 mt-8">
+                            <h4 class="font-bold text-zinc-950 mb-6 flex items-center gap-2">
+                                <i class="ph ph-book-open text-accent"></i> Глоссарий новичка
+                            </h4>
+                            <div class="space-y-6">
+                                <div class="grid grid-cols-1 md:grid-cols-[150px_1fr] gap-2 items-baseline">
+                                    <span class="font-medium text-zinc-900">Фича (Feature)</span>
+                                    <span class="text-sm text-zinc-500 leading-relaxed">Любая функция продукта. Например: "Вход по отпечатку пальца" — это фича.</span>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-[150px_1fr] gap-2 items-baseline">
+                                    <span class="font-medium text-zinc-900">MVP</span>
+                                    <span class="text-sm text-zinc-500 leading-relaxed">Минимально жизнеспособный продукт. Самая базовая версия вашего приложения, сделанная "из палок и изоленты" за неделю, чтобы просто проверить — нужно ли это вообще кому-то, прежде чем тратить миллионы на полноценную разработку.</span>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-[150px_1fr] gap-2 items-baseline">
+                                    <span class="font-medium text-zinc-900">Стейкхолдеры</span>
+                                    <span class="text-sm text-zinc-500 leading-relaxed">Все заинтересованные лица. Инвесторы, генеральный директор, юристы, маркетологи — все, кому не плевать на ваш продукт.</span>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-[150px_1fr] gap-2 items-baseline">
+                                    <span class="font-medium text-zinc-900">Бэклог (Backlog)</span>
+                                    <span class="text-sm text-zinc-500 leading-relaxed">Огромный список-копилка всех идей, пожеланий, багов и задач на будущее. Главная боль продакта — бэклог бесконечен.</span>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-[150px_1fr] gap-2 items-baseline">
+                                    <span class="font-medium text-zinc-900">Баг (Bug)</span>
+                                    <span class="text-sm text-zinc-500 leading-relaxed">Ошибка в коде. Когда кнопка нажимается, а приложение вылетает.</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-100">
-                        <h4 class="font-bold text-emerald-800 mb-2">✅ Что делает PM:</h4>
-                        <ul class="list-disc pl-5 text-sm text-emerald-900 space-y-1">
-                            <li>Изучает рынок и общается с пользователями.</li>
-                            <li>Решает, какую функцию делать первой, а какую — никогда.</li>
-                            <li>Считает экономику (сойдутся ли затраты с прибылью).</li>
-                        </ul>
+
+                    <div class="md:col-span-5 flex flex-col gap-6">
+                        <div class="bg-white rounded-[2rem] p-8 border border-zinc-200/50 shadow-sm">
+                            <h4 class="font-bold text-zinc-900 mb-4 flex items-center gap-2">
+                                <i class="ph ph-check-circle text-accent text-xl"></i> Что делает PM
+                            </h4>
+                            <ul class="text-sm text-zinc-600 space-y-3">
+                                <li class="flex gap-3"><i class="ph ph-arrow-right text-zinc-300 mt-0.5"></i> Изучает рынок и общается с пользователями.</li>
+                                <li class="flex gap-3"><i class="ph ph-arrow-right text-zinc-300 mt-0.5"></i> Решает, какую функцию делать первой, а какую — никогда.</li>
+                                <li class="flex gap-3"><i class="ph ph-arrow-right text-zinc-300 mt-0.5"></i> Считает экономику (сойдутся ли затраты с прибылью).</li>
+                            </ul>
+                        </div>
+                        <div class="bg-zinc-100/50 rounded-[2rem] p-8 border border-zinc-200/50">
+                            <h4 class="font-bold text-zinc-900 mb-4 flex items-center gap-2">
+                                <i class="ph ph-x-circle text-zinc-400 text-xl"></i> Чем PM НЕ занимается
+                            </h4>
+                            <ul class="text-sm text-zinc-500 space-y-3">
+                                <li class="flex gap-3"><i class="ph ph-minus text-zinc-300 mt-0.5"></i> Не пишет код сам (это делают разработчики).</li>
+                                <li class="flex gap-3"><i class="ph ph-minus text-zinc-300 mt-0.5"></i> Не рисует дизайн (это делают UX/UI дизайнеры).</li>
+                                <li class="flex gap-3"><i class="ph ph-minus text-zinc-300 mt-0.5"></i> Не управляет людьми напрямую (он не их начальник, он управляет смыслами).</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                
-                <h4 class="font-bold text-gray-900 mt-8 mb-3">📚 Глоссарий новичка (Базовые термины)</h4>
-                <div class="space-y-3 text-sm text-gray-700">
-                    <p><b class="text-indigo-600">Фича (Feature):</b> Любая функция продукта. Например: "Вход по отпечатку пальца" — это фича.</p>
-                    <p><b class="text-indigo-600">MVP (Minimum Viable Product):</b> Минимально жизнеспособный продукт. Самая базовая версия вашего приложения, сделанная "из палок и изоленты" за неделю, чтобы просто проверить — нужно ли это вообще кому-то, прежде чем тратить миллионы на полноценную разработку.</p>
-                    <p><b class="text-indigo-600">Стейкхолдеры:</b> Все заинтересованные лица. Инвесторы, генеральный директор, юристы, маркетологи — все, кому не плевать на ваш продукт.</p>
-                    <p><b class="text-indigo-600">Бэклог (Backlog):</b> Огромный список-копилка всех идей, пожеланий, багов и задач на будущее. Главная боль продакта — бэклог бесконечен.</p>
-                    <p><b class="text-indigo-600">Баг (Bug):</b> Ошибка в коде. Когда кнопка нажимается, а приложение вылетает.</p>
                 </div>
             </section>
 
-            <h3 class="text-2xl font-bold text-gray-900 mb-6">Разделы справочника</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <a href="formulas.html" class="group block bg-white p-6 rounded-2xl shadow-sm border border-gray-200 hover:border-indigo-400 transition-all">
-                    <div class="text-3xl mb-4 group-hover:scale-110 transition-transform">🧮</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Математика</h3>
-                    <p class="text-gray-600 text-sm">AARRR, CR, CAC, LTV, Churn, NPS. Как оцифровать бизнес и понять его здоровье.</p>
-                </a>
-                <a href="frameworks.html" class="group block bg-white p-6 rounded-2xl shadow-sm border border-gray-200 hover:border-emerald-400 transition-all">
-                    <div class="text-3xl mb-4 group-hover:scale-110 transition-transform">🗺️</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Стратегии</h3>
-                    <p class="text-gray-600 text-sm">CustDev, JTBD, ICE, HADI-циклы. Как понять, чего хотят люди, и не делать лишнего.</p>
-                </a>
-                <a href="processes.html" class="group block bg-white p-6 rounded-2xl shadow-sm border border-gray-200 hover:border-amber-400 transition-all">
-                    <div class="text-3xl mb-4 group-hover:scale-110 transition-transform">⏱️</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Процессы</h3>
-                    <p class="text-gray-600 text-sm">Сроки, Монте-Карло, Agile, Scrum. Как организовать команду, чтобы сдавать проекты вовремя.</p>
-                </a>
+            <section id="tech" class="min-h-[100dvh] flex flex-col justify-center px-6 md:px-16 py-24 border-t border-zinc-200/50">
+                <header class="mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-zinc-950 tracking-tighter leading-none mb-6">
+                        Техническая <br/>грамотность.
+                    </h2>
+                    <p class="text-lg text-zinc-500 leading-relaxed max-w-[65ch]">
+                        Продакт не должен писать код, но он обязан говорить с разработчиками на одном языке, понимать ограничения технологий и архитектуру продукта.
+                    </p>
+                </header>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-white rounded-[2.5rem] p-10 shadow-bento border border-zinc-200/50 interactive-card">
+                        <i class="ph ph-hard-drives text-3xl text-accent mb-4 block"></i>
+                        <h3 class="text-2xl font-bold text-zinc-900 tracking-tight mb-4">Клиент-сервер и Архитектура</h3>
+                        
+                        <p class="text-sm text-zinc-600 leading-relaxed mb-4 mt-4">
+                            Любое современное приложение состоит из двух частей. <b>Клиент (Фронтенд)</b> — это то, что видит юзер (кнопки, экраны в iOS/Android или браузере). <b>Сервер (Бэкенд)</b> — это мозг под капотом. Там живет бизнес-логика (написанная, например, на PHP/Laravel или Python) и базы данных. 
+                        </p>
+                        <p class="text-sm text-zinc-600 leading-relaxed">
+                            Они общаются через <b>API (Application Programming Interface)</b>. Представьте ресторан: вы (Клиент) читаете меню, официант (API) передает ваш заказ на кухню (Сервер), а затем выносит вам готовое блюдо в формате данных (обычно это <b>JSON</b>).
+                        </p>
+                    </div>
+
+                    <div class="bg-zinc-950 rounded-[2.5rem] p-10 text-white shadow-bento border border-zinc-800 interactive-card flex flex-col justify-center">
+                        <i class="ph ph-database text-3xl text-zinc-400 mb-4 block"></i>
+                        <h3 class="text-2xl font-bold tracking-tight mb-4">Базы данных и SQL</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed mb-6">
+                            Данные не висят в воздухе, они хранятся в базах (PostgreSQL, MySQL и др.) в виде связанных таблиц (как в Excel, только сложнее). 
+                            Умение писать базовые <b>SQL-запросы</b> (SELECT, JOIN, GROUP BY) делает PM'а независимым от аналитиков, позволяя самому доставать нужные цифры за пару минут.
+                        </p>
+                        <div class="p-4 bg-zinc-900 rounded-xl font-mono text-xs text-accent border border-zinc-800">
+                            SELECT email FROM users WHERE status = 'premium';
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="metrics" class="min-h-[100dvh] flex flex-col justify-center px-6 md:px-16 py-24 border-t border-zinc-200/50">
+                <header class="mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-zinc-950 tracking-tighter leading-none mb-6">
+                        Продуктовая и <br/>маркетинговая математика.
+                    </h2>
+                    <p class="text-lg text-zinc-500 leading-relaxed max-w-[65ch]">
+                        Метрики — это ваша панель приборов в самолете. Вы не можете управлять бизнесом, если не знаете, летите вы вверх или падаете. Цифры не врут.
+                    </p>
+                </header>
+
+                <div class="space-y-12">
+                    <div>
+                        <h3 class="text-xl font-bold text-zinc-950 mb-6 tracking-tight">1. Фундаментальная экономика продукта</h3>
+                        
+                        <div class="bg-white rounded-[2.5rem] shadow-bento border border-zinc-200/50 overflow-hidden divide-y divide-zinc-100">
+                            <div class="grid grid-cols-1 md:grid-cols-12 p-8 gap-8 hover:bg-zinc-50/50 transition-colors">
+                                <div class="md:col-span-3">
+                                    <span class="font-bold text-lg text-zinc-900 block mb-1">Конверсия (CR)</span>
+                                    <span class="text-xs text-zinc-400 font-mono">Conversion Rate</span>
+                                </div>
+                                <div class="md:col-span-5 text-sm text-zinc-600 leading-relaxed">
+                                    Показывает, какой процент людей совершил нужное нам действие. Представьте магазин: зашло 100 человек, купил 1. Конверсия — 1%.
+                                    <div class="mt-4 p-3 bg-zinc-100 rounded-xl font-mono text-xs text-zinc-800">
+                                        CR = (Целевые действия / Все посетители) × 100%
+                                    </div>
+                                </div>
+                                <div class="md:col-span-4 bg-zinc-50 p-5 rounded-2xl border border-zinc-100 text-sm text-zinc-600">
+                                    <span class="block font-medium text-zinc-900 mb-2">Пример в Atlas:</span>
+                                    На экран создания напоминания зашли 940 человек. Создали его 55.<br><br>
+                                    <span class="font-mono text-accent">(55 / 940) × 100% = 5.8%</span>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-12 p-8 gap-8 hover:bg-zinc-50/50 transition-colors">
+                                <div class="md:col-span-3">
+                                    <span class="font-bold text-lg text-zinc-900 block mb-1">Стоимость привлечения (CAC)</span>
+                                </div>
+                                <div class="md:col-span-5 text-sm text-zinc-600 leading-relaxed">
+                                    Во сколько обходится покупка одного платящего клиента. Вы не получаете пользователей бесплатно — реклама стоит денег.
+                                    <div class="mt-4 p-3 bg-zinc-100 rounded-xl font-mono text-xs text-zinc-800">
+                                        CAC = Затраты на рекламу / Кол-во новых клиентов
+                                    </div>
+                                </div>
+                                <div class="md:col-span-4 bg-zinc-50 p-5 rounded-2xl border border-zinc-100 text-sm text-zinc-600">
+                                    <span class="block font-medium text-zinc-900 mb-2">Пример:</span>
+                                    Потратили 10 000 руб. Пришло 50 пользователей (Premium).<br><br>
+                                    <span class="font-mono text-accent">10 000 / 50 = 200 руб.</span>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-12 p-8 gap-8 hover:bg-zinc-50/50 transition-colors">
+                                <div class="md:col-span-3">
+                                    <span class="font-bold text-lg text-zinc-900 block mb-1">Пожизненная ценность (LTV)</span>
+                                </div>
+                                <div class="md:col-span-5 text-sm text-zinc-600 leading-relaxed">
+                                    Сколько денег клиент приносит бизнесу за все время. Если он платит за подписку каждый месяц, нужно считать всю сумму.
+                                    <div class="mt-4 p-3 bg-zinc-100 rounded-xl font-mono text-xs text-zinc-800">
+                                        LTV = Доход за период × Среднее время жизни
+                                    </div>
+                                </div>
+                                <div class="md:col-span-4 bg-zinc-50 p-5 rounded-2xl border border-zinc-100 text-sm text-zinc-600">
+                                    <span class="block font-medium text-zinc-900 mb-2">Пример:</span>
+                                    Подписка 150 руб/мес. Пользуются в среднем 3 месяца.<br><br>
+                                    <span class="font-mono text-accent">150 × 3 = 450 руб.</span>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-12 p-8 gap-8 bg-accent/5">
+                                <div class="md:col-span-3">
+                                    <span class="font-bold text-lg text-accent block mb-1">Экономика продукта</span>
+                                    <span class="text-xs text-accent font-mono">Unit Economics</span>
+                                </div>
+                                <div class="md:col-span-9 text-sm text-zinc-700 leading-relaxed">
+                                    Золотое правило стартапа. То, сколько мы зарабатываем с клиента, должно перекрывать затраты на его привлечение. Если вы тратите на привлечение 1000 рублей, а он приносит 500 — бизнес убыточен при любых масштабах.
+                                    <div class="mt-4 flex items-center gap-4">
+                                        <div class="p-3 bg-accent text-white rounded-xl font-mono text-sm font-bold shadow-sm">
+                                            LTV > CAC
+                                        </div>
+                                        <span class="text-xs text-zinc-500">(В идеале LTV > CAC × 3)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold text-zinc-950 mb-6 tracking-tight">2. Метрики Жизнеспособности</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            
+                            <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-zinc-200/50 flex flex-col interactive-card">
+                                <i class="ph ph-magnet text-2xl text-accent mb-4"></i>
+                                <h4 class="font-bold text-zinc-900 mb-2">Retention Rate</h4>
+                                <p class="text-sm text-zinc-500 mb-6 flex-1">Процент людей, которые возвращаются в приложение спустя время. Если 100 скачали в ПН, а через неделю открыли 10, Retention 7-го дня = 10%.</p>
+                                <div class="pt-4 border-t border-zinc-100 font-mono text-[11px] text-zinc-400">
+                                    (Вернувшиеся / Установившие) × 100%
+                                </div>
+                            </div>
+
+                            <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-zinc-200/50 flex flex-col interactive-card">
+                                <i class="ph ph-drop text-2xl text-zinc-400 mb-4"></i>
+                                <h4 class="font-bold text-zinc-900 mb-2">Churn Rate (Отток)</h4>
+                                <p class="text-sm text-zinc-500 mb-6 flex-1">Метрика "Дырявого ведра". Процент пользователей, удаливших приложение. Бесполезно вливать деньги в рекламу, если вода вытекает.</p>
+                                <div class="pt-4 border-t border-zinc-100 font-mono text-[11px] text-zinc-400">
+                                    (Ушедшие / Все пользователи) × 100%
+                                </div>
+                            </div>
+
+                            <div class="bg-zinc-900 p-8 rounded-[2rem] shadow-sm border border-zinc-800 flex flex-col interactive-card text-white">
+                                <i class="ph ph-activity text-2xl text-accent mb-4"></i>
+                                <h4 class="font-bold mb-2">DAU / MAU</h4>
+                                <p class="text-sm text-zinc-400 mb-6 flex-1">
+                                    Daily / Monthly Active Users. Инвесторы смотрят на живую аудиторию, а не скачивания. Отношение DAU к MAU показывает <b>Sticky Factor (Липкость)</b>.
+                                </p>
+                                <div class="pt-4 border-t border-zinc-800 font-mono text-[11px] text-zinc-500">
+                                    Высокая липкость = Привычка
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="analytics" class="min-h-[100dvh] flex flex-col justify-center px-6 md:px-16 py-24 border-t border-zinc-200/50">
+                <header class="mb-16 max-w-3xl">
+                    <h2 class="text-4xl md:text-5xl font-bold text-zinc-950 tracking-tighter leading-none mb-6">
+                        Инструментарий <br/>аналитика.
+                    </h2>
+                    <p class="text-lg text-zinc-500 leading-relaxed">
+                        Формулы хороши в теории, но на практике PM работает с дашбордами и "сырыми" данными, чтобы докопаться до истины.
+                    </p>
+                </header>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                    <div class="md:col-span-7 bg-white rounded-[2.5rem] p-10 shadow-bento border border-zinc-200/50 interactive-card">
+                        <h3 class="text-2xl font-bold text-zinc-900 tracking-tight mb-4 flex items-center gap-3">
+                            <i class="ph ph-users-three text-accent"></i> Когортный анализ
+                        </h3>
+                        <p class="text-sm text-zinc-600 leading-relaxed mb-6">
+                            Анализ пользователей не общей массой, а группами (когортами) по времени регистрации или источнику. Это позволяет понять, как изменения в продукте влияют на новые поколения пользователей. 
+                            Например: пользователи, пришедшие в декабре после редизайна, удерживаются лучше, чем "ноябрьские".
+                        </p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs text-zinc-500 font-mono">
+                                <thead class="bg-zinc-50 text-zinc-700">
+                                    <tr>
+                                        <th class="p-3 rounded-tl-xl">Когорта</th>
+                                        <th class="p-3">Размер</th>
+                                        <th class="p-3">День 1</th>
+                                        <th class="p-3">День 7</th>
+                                        <th class="p-3 rounded-tr-xl">День 30</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-zinc-100">
+                                        <td class="p-3 font-medium">1 Ноя - 7 Ноя</td>
+                                        <td class="p-3">1,200</td>
+                                        <td class="p-3 bg-accent/20 text-accent font-bold">45%</td>
+                                        <td class="p-3 bg-accent/10">20%</td>
+                                        <td class="p-3 bg-zinc-50">8%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-medium">8 Ноя - 14 Ноя</td>
+                                        <td class="p-3">1,500</td>
+                                        <td class="p-3 bg-accent/40 text-accent font-bold">52%</td>
+                                        <td class="p-3 bg-accent/20 text-accent font-bold">28%</td>
+                                        <td class="p-3 bg-accent/10">12%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-5 flex flex-col gap-6">
+                        <div class="bg-zinc-900 p-8 rounded-[2rem] border border-zinc-800 text-white shadow-sm">
+                            <h4 class="font-bold mb-3">Статистическая значимость (A/B тесты)</h4>
+                            <p class="text-sm text-zinc-400 leading-relaxed mb-4">
+                                Если в варианте B конверсия выше на 2% — это победа или случайный выброс? PM всегда рассчитывает <b>p-value</b> (вероятность ошибки). Размер выборки имеет значение: тест на 100 пользователях ничего не доказывает.
+                            </p>
+                        </div>
+                        <div class="bg-white p-8 rounded-[2rem] border border-zinc-200/50 shadow-sm">
+                            <h4 class="font-bold text-zinc-900 mb-3">Популярные инструменты</h4>
+                            <ul class="text-sm text-zinc-600 space-y-2">
+                                <li><b>Amplitude / Mixpanel:</b> Продуктовая аналитика, воронки, события.</li>
+                                <li><b>Google Analytics / Я.Метрика:</b> Веб-аналитика, источники трафика.</li>
+                                <li><b>Metabase / Tableau:</b> BI-системы для визуализации SQL-баз.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ux" class="min-h-[100dvh] flex flex-col justify-center px-6 md:px-16 py-24 border-t border-zinc-200/50">
+                <header class="mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-zinc-950 tracking-tighter leading-none mb-6">
+                        Проектирование UX.
+                    </h2>
+                    <p class="text-lg text-zinc-500 leading-relaxed max-w-[65ch]">
+                        PM не рисует красивые тени на кнопках. PM проектирует логику, экраны и сценарии того, как пользователь будет решать свою проблему.
+                    </p>
+                </header>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                    <div class="md:col-span-6 bg-white rounded-[2.5rem] p-10 shadow-bento border border-zinc-200/50 interactive-card">
+                        <h3 class="text-2xl font-bold text-zinc-900 mb-4">CJM (Customer Journey Map)</h3>
+                        
+
+[Image of Customer Journey Map example]
+
+                        <p class="text-sm text-zinc-600 leading-relaxed mt-4">
+                            Карта пути пользователя. Это таблица, описывающая каждый шаг клиента — от момента "увидел рекламу" до "купил подписку" и "обратился в поддержку". На каждом шаге мы фиксируем его <b>действия, эмоции и барьеры</b>, чтобы найти точки роста.
+                        </p>
+                    </div>
+
+                    <div class="md:col-span-6 space-y-6">
+                        <div class="bg-white rounded-[2rem] p-8 border border-zinc-200/50 shadow-sm">
+                            <h4 class="font-bold text-zinc-900 mb-2 flex items-center gap-2">
+                                <i class="ph ph-flow-arrow text-accent"></i> User Flow и Wireframes
+                            </h4>
+                            <p class="text-sm text-zinc-600 leading-relaxed">
+                                Блок-схемы того, куда ведет каждое нажатие. Перед тем как ставить задачу дизайнеру, PM собирает <b>Wireframe</b> — черновой набросок интерфейса из серых квадратов (часто прямо в Figma), чтобы согласовать логику.
+                            </p>
+                        </div>
+                        <div class="bg-zinc-50 rounded-[2rem] p-8 border border-zinc-200/50 shadow-sm">
+                            <h4 class="font-bold text-zinc-900 mb-2">Юзабилити-тестирование</h4>
+                            <p class="text-sm text-zinc-600 leading-relaxed">
+                                Даете сырой прототип человеку в руки и просите выполнить задачу (например, "добавь товар в корзину"). Вы молчите и смотрите, куда он кликает. Выявляет 90% проблем с интерфейсом до написания кода.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="strategy" class="min-h-[100dvh] flex flex-col justify-center px-6 md:px-16 py-24 border-t border-zinc-200/50">
+                <header class="mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-zinc-950 tracking-tighter leading-none mb-6">
+                        Стратегия и Видение.
+                    </h2>
+                    <p class="text-lg text-zinc-500 leading-relaxed max-w-[65ch]">
+                        Тактика — это "как сделать фичу". Стратегия — это "зачем мы вообще существуем на рынке и куда идем ближайшие 3 года".
+                    </p>
+                </header>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-zinc-950 rounded-[2.5rem] p-10 text-white shadow-bento border border-zinc-800 interactive-card">
+                        <h3 class="text-2xl font-bold tracking-tight mb-6">Оценка рынка (TAM, SAM, SOM)</h3>
+                        
+                        <ul class="space-y-4 mt-6 text-sm text-zinc-400">
+                            <li><b class="text-white">TAM (Total Addressable Market):</b> Весь глобальный рынок. (Все, кому нужны напоминания в мире).</li>
+                            <li><b class="text-accent">SAM (Serviceable Available Market):</b> Доля рынка, до которой вы можете дотянуться вашими каналами. (Русскоязычные студенты и менеджеры).</li>
+                            <li><b class="text-white">SOM (Serviceable Obtainable Market):</b> Реалистичная доля рынка, которую вы займете в ближайшее время с учетом конкуренции.</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-col gap-6">
+                        <div class="bg-white rounded-[2rem] p-8 border border-zinc-200/50 shadow-sm flex-1">
+                            <h4 class="font-bold text-zinc-900 mb-2">OKR (Objectives and Key Results)</h4>
+                            <p class="text-sm text-zinc-600 leading-relaxed mb-4">
+                                Система целеполагания. В отличие от KPI (сделать план на 100%), OKR — это амбициозные цели, выполнение которых на 70% уже считается успехом.
+                            </p>
+                            <div class="p-3 bg-zinc-50 rounded-xl border border-zinc-100 text-xs">
+                                <b>Objective (Цель):</b> Стать лучшим приложением для продуктивности в СНГ.<br>
+                                <b>Key Result 1:</b> Увеличить Retention 30-го дня до 15%.<br>
+                                <b>Key Result 2:</b> Достичь 10,000 MAU.
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-[2rem] p-8 border border-zinc-200/50 shadow-sm flex-1">
+                            <h4 class="font-bold text-zinc-900 mb-2">Go-to-Market (GTM)</h4>
+                            <p class="text-sm text-zinc-600 leading-relaxed">
+                                Стратегия вывода продукта на рынок. Кто целевая аудитория? Как позиционируемся относительно конкурентов? Какие каналы продаж используем (B2B, B2C, партнерства)?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="frameworks" class="min-h-[100dvh] flex flex-col justify-center px-6 md:px-16 py-24 border-t border-zinc-200/50">
+                <header class="mb-16 max-w-3xl">
+                    <h2 class="text-4xl md:text-5xl font-bold text-zinc-950 tracking-tighter leading-none mb-6">
+                        Тактика: <br/>Как понять, что делать?
+                    </h2>
+                    <p class="text-lg text-zinc-500 leading-relaxed">
+                        Главная причина смерти стартапов — продукт, который никому не нужен. Инструменты ниже помогают слышать рынок и проверять идеи до того, как вы сожжете бюджет.
+                    </p>
+                </header>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-white rounded-[2.5rem] p-10 shadow-bento border border-zinc-200/50 interactive-card">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 rounded-full bg-zinc-100 flex items-center justify-center">
+                                <i class="ph ph-scales text-xl text-zinc-700"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-zinc-900 tracking-tight">A/B Тестирование</h3>
+                        </div>
+                        <p class="text-zinc-600 text-sm leading-relaxed mb-6">
+                            Математическая проверка гипотез. Аудитория делится на равные части, которым <b>одновременно</b> показывают разные версии продукта. Не доверяйте интуиции, доверяйте цифрам.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="p-4 bg-zinc-50 rounded-2xl border border-zinc-100">
+                                <span class="block text-xs text-zinc-400 font-mono mb-1">Группа А</span>
+                                <span class="font-medium text-sm text-zinc-900">Ручной ввод</span>
+                                <span class="block mt-2 text-lg font-bold text-zinc-300">5% CR</span>
+                            </div>
+                            <div class="p-4 bg-accent/5 rounded-2xl border border-accent/20">
+                                <span class="block text-xs text-accent/60 font-mono mb-1">Группа Б</span>
+                                <span class="font-medium text-sm text-accent">Список выбора</span>
+                                <span class="block mt-2 text-lg font-bold text-accent">8% CR</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-[2.5rem] p-10 shadow-bento border border-zinc-200/50 interactive-card">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 rounded-full bg-zinc-100 flex items-center justify-center">
+                                <i class="ph ph-funnel text-xl text-zinc-700"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-zinc-900 tracking-tight">Воронки (Funnels)</h3>
+                        </div>
+                        <p class="text-zinc-600 text-sm leading-relaxed mb-6">
+                            Разбиение пути пользователя на микро-шаги для поиска «узкого горлышка» (места, где отваливается больше всего людей). Вы не можете лечить болезнь, если не знаете, где болит.
+                        </p>
+                        <div class="space-y-2 mt-8">
+                            <div class="flex justify-between items-center text-xs font-mono text-zinc-500">
+                                <span>Открытие</span> <span>100%</span>
+                            </div>
+                            <div class="w-full bg-zinc-100 rounded-full h-1.5"><div class="bg-zinc-300 h-1.5 rounded-full" style="width: 100%"></div></div>
+                            
+                            <div class="flex justify-between items-center text-xs font-mono text-zinc-500 pt-2">
+                                <span>Регистрация</span> <span>85%</span>
+                            </div>
+                            <div class="w-full bg-zinc-100 rounded-full h-1.5"><div class="bg-zinc-300 h-1.5 rounded-full" style="width: 85%"></div></div>
+
+                            <div class="flex justify-between items-center text-xs font-mono text-accent font-bold pt-2">
+                                <span>Привязка Telegram (Обрыв)</span> <span>15%</span>
+                            </div>
+                            <div class="w-full bg-zinc-100 rounded-full h-1.5"><div class="bg-accent h-1.5 rounded-full" style="width: 15%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                    <div class="md:col-span-5 flex flex-col gap-6">
+                        <div class="bg-white p-8 rounded-[2rem] border border-zinc-200/50 shadow-sm">
+                            <h4 class="font-bold text-zinc-900 mb-3 flex items-center gap-2">
+                                <i class="ph ph-chats text-accent"></i> CustDev (Интервью)
+                            </h4>
+                            <p class="text-sm text-zinc-600 mb-4">Люди врут (Правило "Спроси маму"). Спрашивайте о прошлом опыте, а не о фантазиях в будущем.</p>
+                            <div class="space-y-3 text-sm">
+                                <div class="p-3 bg-zinc-50 rounded-xl border border-zinc-100">
+                                    <span class="text-zinc-400 line-through block mb-1">Вам нужно приложение для напоминаний?</span>
+                                </div>
+                                <div class="p-3 bg-accent/5 rounded-xl border border-accent/20">
+                                    <span class="text-accent font-medium block">Как вы вчера не забыли про важную встречу?</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-zinc-950 p-8 rounded-[2rem] border border-zinc-800 text-white shadow-sm">
+                            <h4 class="font-bold mb-3 flex items-center gap-2">
+                                <i class="ph ph-target text-accent"></i> Идеализированное проектирование
+                            </h4>
+                            <p class="text-sm text-zinc-400">Полное игнорирование текущих проблем. Не спрашивайте как улучшить кнопку. Спросите, как выглядит идеальный процесс без ограничений.</p>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-7 bg-white rounded-[2.5rem] p-10 shadow-bento border border-zinc-200/50 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold text-zinc-900 tracking-tight mb-4">Приоритизация: Метод ICE</h3>
+                            <p class="text-sm text-zinc-500 leading-relaxed mb-8">
+                                У вас бэклог из 100 фич и 3 программиста. Что делать в первую очередь? ICE превращает споры в холодную математику. Оценка от 1 до 10.
+                            </p>
+                            
+                            <div class="grid grid-cols-3 gap-4 mb-8">
+                                <div class="text-center">
+                                    <div class="text-3xl font-black text-zinc-200 mb-2">I</div>
+                                    <div class="font-bold text-xs text-zinc-900 mb-1">Impact</div>
+                                    <div class="text-[10px] text-zinc-500 uppercase tracking-widest">Влияние</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-black text-zinc-200 mb-2">C</div>
+                                    <div class="font-bold text-xs text-zinc-900 mb-1">Confidence</div>
+                                    <div class="text-[10px] text-zinc-500 uppercase tracking-widest">Уверенность</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-black text-zinc-200 mb-2">E</div>
+                                    <div class="font-bold text-xs text-zinc-900 mb-1">Ease</div>
+                                    <div class="text-[10px] text-zinc-500 uppercase tracking-widest">Легкость</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-zinc-50 p-6 rounded-2xl border border-zinc-100">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="font-mono text-xs text-zinc-400">Формула: I × C × E</span>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="text-zinc-500">Синхронизация с календарем</span>
+                                    <span class="font-mono font-medium text-zinc-400">144 pts</span>
+                                </div>
+                                <div class="flex justify-between items-center text-sm bg-white p-3 rounded-xl shadow-sm border border-zinc-100">
+                                    <span class="font-medium text-zinc-900">Темная тема</span>
+                                    <span class="font-mono font-bold text-accent">216 pts</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="processes" class="min-h-[100dvh] flex flex-col justify-center px-6 md:px-16 py-24 border-t border-zinc-200/50">
+                <header class="mb-16 max-w-3xl">
+                    <h2 class="text-4xl md:text-5xl font-bold text-zinc-950 tracking-tighter leading-none mb-6">
+                        Процессы: <br/>Kanban, WIP и Сроки.
+                    </h2>
+                    <p class="text-lg text-zinc-500 leading-relaxed">
+                        Компания работает как забитое машинами шоссе. Учимся выстраивать "конвейер" так, чтобы задачи двигались быстро и без пробок.
+                    </p>
+                </header>
+
+                <div class="space-y-8">
+                    <div class="bg-white rounded-[2.5rem] p-10 shadow-bento border border-zinc-200/50">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                            <div>
+                                <h3 class="text-2xl font-bold text-zinc-900 tracking-tight mb-4 flex items-center gap-3">
+                                    <i class="ph ph-kanban text-accent"></i> Kanban и WIP-лимиты
+                                </h3>
+                                <p class="text-sm text-zinc-600 leading-relaxed mb-6">
+                                    В отличие от Scrum (спринты), в Канбане задачи идут непрерывным потоком. WIP-лимит (Work In Progress) — жесткое ограничение на количество задач в одной колонке.
+                                </p>
+                                <div class="p-5 bg-zinc-50 border border-zinc-200/50 rounded-2xl">
+                                    <h5 class="font-bold text-zinc-900 mb-2">Сворминг (Swarming)</h5>
+                                    <p class="text-xs text-zinc-500 leading-relaxed">
+                                        Если WIP-лимит достигнут, программист не берет новую задачу. Вся команда "наваливается" на узкое место. Общая цель — готовый продукт, а не личная занятость.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex flex-col justify-center space-y-4">
+                                <div class="p-4 border border-zinc-200 border-dashed rounded-2xl bg-zinc-50 text-center">
+                                    <span class="block text-xs font-mono text-zinc-400 mb-1">Без WIP-лимита</span>
+                                    <span class="text-sm font-medium text-zinc-600">Код пишется, но продукт не выходит.</span>
+                                </div>
+                                <div class="flex justify-center">
+                                    <i class="ph ph-arrows-down-up text-zinc-300"></i>
+                                </div>
+                                <div class="p-4 border border-accent/30 bg-accent/5 rounded-2xl text-center shadow-sm">
+                                    <span class="block text-xs font-mono text-accent mb-1">Правило с WIP</span>
+                                    <span class="text-sm font-bold text-accent">"Хватит начинать, начни заканчивать"</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        <div class="lg:col-span-5 bg-white rounded-[2.5rem] p-10 shadow-bento border border-zinc-200/50">
+                            <h4 class="text-xl font-bold text-zinc-900 mb-6 tracking-tight">Иллюзия оценок</h4>
+                            <div class="space-y-6">
+                                <div>
+                                    <div class="flex items-baseline justify-between mb-1">
+                                        <span class="font-medium text-sm text-zinc-900">Cycle Time</span>
+                                        <span class="text-xs font-mono text-zinc-400">~3 дня</span>
+                                    </div>
+                                    <p class="text-xs text-zinc-500">Время, пока программист реально пишет код.</p>
+                                </div>
+                                <div class="w-full h-px bg-zinc-100"></div>
+                                <div>
+                                    <div class="flex items-baseline justify-between mb-1">
+                                        <span class="font-medium text-sm text-zinc-900">Lead Time</span>
+                                        <span class="text-xs font-mono text-accent font-bold">45 дней</span>
+                                    </div>
+                                    <p class="text-xs text-zinc-500">Время от идеи до релиза.</p>
+                                </div>
+                            </div>
+                            <div class="mt-8 p-4 bg-zinc-50 rounded-2xl border border-zinc-100 text-xs text-zinc-600 leading-relaxed">
+                                <b>Где 42 дня? В очередях.</b> Ждем дизайна, ждем тестирования, ждем релиза. Менеджер должен чинить очереди, а не подгонять людей.
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-7 bg-white rounded-[2.5rem] p-10 shadow-bento border border-zinc-200/50">
+    <h4 class="text-xl font-bold text-zinc-900 mb-4 tracking-tight flex items-center gap-2">
+        <i class="ph ph-dice-five text-accent"></i> Метод Монте-Карло
+    </h4>
+    <p class="text-sm text-zinc-600 mb-4 leading-relaxed">
+        Людям свойственно ошибаться в оценках (мы всегда слишком оптимистичны). Метод Монте-Карло — это скрипт (например, плагин в Jira), который берет скорость работы вашей команды за прошлые месяцы и прогоняет 10 000 симуляций будущего проекта.
+    </p>
+    <p class="text-sm text-zinc-500 mb-8 leading-relaxed">
+        <b>Что делать с этими цифрами?</b> Продакт-менеджер не считает это руками. Он смотрит на результат алгоритма и задает бизнесу один вопрос: <i>«Насколько страшно нам будет опоздать?»</i>. В зависимости от ответа, вы выбираете один из трех путей:
+    </p>
+    
+    <div class="space-y-4">
+        <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-zinc-50 transition-colors">
+            <div class="w-10 h-10 rounded-full bg-zinc-100 flex items-center justify-center shrink-0 text-xs font-mono text-zinc-500">50%</div>
+            <div>
+                <div class="text-sm font-medium text-zinc-900">Агрессивный срок (например: 6 недель)</div>
+                <div class="text-xs text-zinc-500 mt-2 leading-relaxed">
+                    <b>Как понимать:</b> Шансы успеть — 50/50. Как подкинуть монетку.<br>
+                    <b>Что делает PM:</b> Вы соглашаетесь на этот срок, только если дедлайн не жесткий, бизнесу просто «хочется побыстрее», и за опоздание никого не уволят.
+                </div>
             </div>
+        </div>
+        
+        <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-zinc-50 transition-colors">
+            <div class="w-10 h-10 rounded-full bg-zinc-100 flex items-center justify-center shrink-0 text-xs font-mono text-zinc-700 font-bold">85%</div>
+            <div>
+                <div class="text-sm font-medium text-zinc-900">Золотой стандарт (например: 8 недель)</div>
+                <div class="text-xs text-zinc-500 mt-2 leading-relaxed">
+                    <b>Как понимать:</b> В 85 симуляциях из 100 мы уложились в это время.<br>
+                    <b>Что делает PM:</b> Именно эту дату вы берете как рабочий ориентир и озвучиваете руководству. Это идеальный баланс между скоростью и надежностью (риск провала всего 15%).
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex items-start gap-4 p-4 rounded-xl bg-accent/5 border border-accent/10">
+            <div class="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center shrink-0 text-xs font-mono font-bold shadow-sm">95%</div>
+            <div>
+                <div class="text-sm font-medium text-accent">Железобетонный срок (например: 10 недель)</div>
+                <div class="text-xs text-zinc-600 mt-2 leading-relaxed">
+                    <b>Как понимать:</b> Практически 100% гарантия. Алгоритм заложил время на баги, болезни сотрудников и пожары.<br>
+                    <b>Что делает PM:</b> Вы берете этот срок, если на дату релиза завязан жесткий контракт, куплена масштабная ТВ-реклама или грозят юридические штрафы. Опаздывать нельзя вообще.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="softskills" class="min-h-[100dvh] flex flex-col justify-center px-6 md:px-16 py-24 border-t border-zinc-200/50">
+                <header class="mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-zinc-950 tracking-tighter leading-none mb-6">
+                        Soft Skills.
+                    </h2>
+                    <p class="text-lg text-zinc-500 leading-relaxed max-w-[65ch]">
+                        Управление продуктом — это на 70% коммуникация. У вас нет прямой власти над разработчиками и дизайнерами, поэтому вы управляете через смыслы, влияние и эмпатию.
+                    </p>
+                </header>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-[2.5rem] p-8 shadow-sm border border-zinc-200/50 flex flex-col interactive-card">
+                        <i class="ph ph-handshake text-3xl text-accent mb-4"></i>
+                        <h4 class="font-bold text-zinc-900 mb-3 text-lg">Stakeholder Management</h4>
+                        <p class="text-sm text-zinc-600 leading-relaxed flex-1">
+                            Умение управлять ожиданиями заказчиков (CEO, инвесторы, маркетинг). Главное правило: не прятать проблемы. Если сроки горят, стейкхолдер должен узнать об этом первым и от вас, вместе с предложенными вариантами решения.
+                        </p>
+                    </div>
+
+                    <div class="bg-white rounded-[2.5rem] p-8 shadow-sm border border-zinc-200/50 flex flex-col interactive-card">
+                        <i class="ph ph-megaphone text-3xl text-accent mb-4"></i>
+                        <h4 class="font-bold text-zinc-900 mb-3 text-lg">Pitching (Защита идей)</h4>
+                        <p class="text-sm text-zinc-600 leading-relaxed flex-1">
+                            Ваша идея ничего не стоит, пока вы не продали её команде и бизнесу. Питч строится не на "какая классная кнопка", а на формуле: "У нас есть проблема X, решение Y принесет нам Z денег/пользователей, это потребует N ресурсов".
+                        </p>
+                    </div>
+
+                    <div class="bg-zinc-950 rounded-[2.5rem] p-8 text-white shadow-sm border border-zinc-800 flex flex-col interactive-card">
+                        <i class="ph ph-users-three text-3xl text-zinc-400 mb-4"></i>
+                        <h4 class="font-bold mb-3 text-lg">Фасилитация встреч</h4>
+                        <p class="text-sm text-zinc-400 leading-relaxed flex-1">
+                            Искусство делать созвоны эффективными. У любой встречи должна быть цель, повестка (агенда) и зафиксированные итоги (Follow-up) с назначенными ответственными. Бесцельный созвон 5 инженеров на час стоит компании огромных денег.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <div id="footer"></div>
 
         </div>
     </main>
+
+    <script src="source/script.js"></script>
 </body>
 </html>
